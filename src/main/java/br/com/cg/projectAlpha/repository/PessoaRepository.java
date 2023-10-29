@@ -17,6 +17,6 @@ public interface PessoaRepository extends PagingAndSortingRepository<Pessoa, Big
 
     Optional<Pessoa> findById(BigInteger id);
 
-    void delete(Pessoa pessoa);
+    Pessoa delete(Pessoa pessoa);
 
 }

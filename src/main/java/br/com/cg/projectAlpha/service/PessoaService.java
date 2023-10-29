@@ -1,6 +1,8 @@
 package br.com.cg.projectAlpha.service;
 
 import br.com.cg.projectAlpha.dto.PessoaRequestDto;
+import br.com.cg.projectAlpha.enums.PessoaErrors;
+import br.com.cg.projectAlpha.exceptions.PessoaException;
 import br.com.cg.projectAlpha.model.Pessoa;
 import br.com.cg.projectAlpha.repository.PessoaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +13,6 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigInteger;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -40,12 +41,12 @@ public class PessoaService {
         return pessoaRepository.save(pessoa);
     }
 
-    public Pessoa update(BigInteger id, Pessoa pessoa) {
+    public Pessoa update(BigInteger id, Pessoa pessoa) throws PessoaException {
         Pessoa pessoaData = pessoaRepository.findById(id).orElseThrow(
-                () -> new RuntimeException("Erro ao encontrar pessoa"));
+                () -> new PessoaException(PessoaErrors.PESSOA_NOT_FOUND, id.toString()));
 
         return pessoaRepository.save(Pessoa.builder()
-                        .id(pessoaData.getId())
+                        .idPessoa(pessoaData.getIdPessoa())
                         .cpf(pessoa.getCpf())
                         .nome(pessoa.getNome())
                         .datanascimento(pessoa.getDatanascimento())
@@ -53,13 +54,14 @@ public class PessoaService {
     }
 
 
-    public Pessoa findById(BigInteger id) {
+    public Pessoa findById(BigInteger id) throws PessoaException {
         return pessoaRepository.findById(id).orElseThrow(
-                ()-> new RuntimeException("Pessoa não encontrada"));
+                ()-> new PessoaException(PessoaErrors.PESSOA_NOT_FOUND, id.toString()));
     }
 
-    public void delete(BigInteger id) {
+    public Pessoa delete(BigInteger id) throws PessoaException {
         Pessoa pessoa = findById(id);
         pessoaRepository.delete(pessoa);
+        return pessoa;
     }
 }

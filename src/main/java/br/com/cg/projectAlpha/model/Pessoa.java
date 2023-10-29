@@ -20,7 +20,7 @@ public class Pessoa {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
-    private BigInteger id;
+    private BigInteger idPessoa;
 
     @Column(name="cpf")
     private Integer cpf;
@@ -30,6 +30,5 @@ public class Pessoa {
 
     @Column(name="datanascimento")
     private LocalDate datanascimento;
-
 
 }

@@ -8,7 +8,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDate;
 
@@ -50,7 +49,7 @@ public class Projeto {
     @Column(name="risco")
     private Risco risco;
 
-    @OneToOne (cascade = CascadeType.ALL, orphanRemoval=true,fetch = FetchType.EAGER)
-    @JoinColumn (name = "id")
-    private Pessoa idgerente;
+    @ManyToOne
+    @JoinColumn(name="idgerente", referencedColumnName="id")
+    private Pessoa gerente;
 }
