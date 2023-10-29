@@ -54,7 +54,7 @@ public class ProjetoController {
     @DeleteMapping("/{id}")
     public ResponseEntity<Projeto> delete(@PathVariable("id") BigInteger id) throws ProjetoException {
         Projeto projetoDeleted = projetoService.delete(id);
-        LOG.info("Projeto updated - ID: {}", projetoDeleted.getId());
+        LOG.info("Projeto updated - ID: {}", id);
         return new ResponseEntity<Projeto>(projetoDeleted, HttpStatus.OK);
     }
 }

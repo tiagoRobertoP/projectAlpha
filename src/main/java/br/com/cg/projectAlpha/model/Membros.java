@@ -15,13 +15,8 @@ import java.math.BigInteger;
 @Data
 @Table(name="membros")
 public class Membros {
-    @Id
-    @Column(name="idprojeto")
-    private BigInteger idprojeto;
-
-    @Id
-    @Column(name="idpessoas")
-    private BigInteger idpessoas;
+    @EmbeddedId
+    private MembrosId membrosId;
 
 
 }
