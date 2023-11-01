@@ -31,4 +31,7 @@ public class Pessoa {
     @Column(name="datanascimento")
     private LocalDate datanascimento;
 
+    @Column(name="funcionario")
+    private Boolean funcionario;
+
 }

@@ -31,4 +31,10 @@ public class ProjetoRequestDto {
     private Risco risco;
 
     private BigInteger idgerente;
+
+    private Boolean funcionario;
+
+    private String funcionarioDescricao;
+
+    private BigInteger gerente;
 }

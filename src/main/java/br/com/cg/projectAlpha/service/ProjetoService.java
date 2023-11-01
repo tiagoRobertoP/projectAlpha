@@ -38,7 +38,7 @@ public class ProjetoService {
     }
 
     public Projeto addProjeto(ProjetoRequestDto projetoRequestDto) throws ProjetoException {
-        Pessoa gerente = pessoaRepository.findById(projetoRequestDto.getIdgerente()).orElseThrow(
+        Pessoa gerente = pessoaRepository.findById(projetoRequestDto.getGerente()).orElseThrow(
                 ()-> new ProjetoException(ProjetoErrors.PROJETO_NOT_FOUND, projetoRequestDto.getIdgerente().toString()));
 
         Projeto projeto = Projeto.builder()

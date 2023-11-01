@@ -22,7 +22,7 @@ public class PessoaService {
     private PessoaRepository pessoaRepository;
 
     public Page<Pessoa> getPessoas(Pageable pageable){
-        List<Pessoa> pessoaList = pessoaRepository.findAllByOrderByNomeDesc();
+        List<Pessoa> pessoaList = pessoaRepository.findAllByOrderByNomeAsc();
         List<Pessoa> pageList = pessoaList.stream()
                 .skip(pageable.getOffset())
                 .limit(pageable.getPageSize())
@@ -37,6 +37,7 @@ public class PessoaService {
                 .cpf(pessoaRequestDto.getCpf())
                 .nome(pessoaRequestDto.getNome())
                 .datanascimento(pessoaRequestDto.getDatanascimento())
+                .funcionario(pessoaRequestDto.getFuncionario())
                 .build();
         return pessoaRepository.save(pessoa);
     }
@@ -50,6 +51,7 @@ public class PessoaService {
                         .cpf(pessoa.getCpf())
                         .nome(pessoa.getNome())
                         .datanascimento(pessoa.getDatanascimento())
+                        .funcionario(pessoa.getFuncionario())
                 .build());
     }
 

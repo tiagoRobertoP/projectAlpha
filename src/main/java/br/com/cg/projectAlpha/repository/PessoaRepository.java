@@ -11,7 +11,7 @@ import java.util.Optional;
 @Repository
 public interface PessoaRepository extends PagingAndSortingRepository<Pessoa, BigInteger> {
 
-    List<Pessoa> findAllByOrderByNomeDesc();
+    List<Pessoa> findAllByOrderByNomeAsc();
 
     Pessoa save(Pessoa pessoa);
 

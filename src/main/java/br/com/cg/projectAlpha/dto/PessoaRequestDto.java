@@ -15,4 +15,6 @@ public class PessoaRequestDto {
     private String nome;
 
     private LocalDate datanascimento;
+
+    private Boolean funcionario;
 }
