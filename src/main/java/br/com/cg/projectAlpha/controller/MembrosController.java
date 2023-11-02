@@ -17,6 +17,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigInteger;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/membros")
@@ -32,6 +33,11 @@ public class MembrosController {
     public Page<Membros> get(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "5") int size) {
         Pageable paging = PageRequest.of(page, size);
         return membrosService.getMembros(paging);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<List<Membros>> findById (@PathVariable("id") BigInteger id) throws ProjetoException {
+        return new ResponseEntity<List<Membros>>(membrosService.findById(id), HttpStatus.OK);
     }
 
     @PostMapping

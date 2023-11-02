@@ -17,6 +17,7 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.math.BigInteger;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -69,5 +70,16 @@ public class MembrosService {
 
         Projeto projeto = projetoRepository.findById(membros.getIdprojeto()).orElseThrow(
                 ()-> new ProjetoException(ProjetoErrors.PROJETO_NOT_FOUND, membros.getIdprojeto().toString()));
+    }
+
+    public List<Membros> findById(BigInteger id) throws ProjetoException {
+        List<Membros> membros;
+        try{
+            membros = membrosRepository.findAllByMembrosId_Idprojeto(id);
+        }catch (Exception e){
+            throw new ProjetoException(ProjetoErrors.PROJETO_NOT_FOUND, id.toString());
+        }
+
+        return membros;
     }
 }

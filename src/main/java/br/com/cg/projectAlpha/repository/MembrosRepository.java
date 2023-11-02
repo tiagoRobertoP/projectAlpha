@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import java.math.BigInteger;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Repository
@@ -19,4 +20,5 @@ public interface MembrosRepository extends PagingAndSortingRepository<Membros, B
 
     Optional<Membros> findById(BigInteger idprojeto);
 
+    List<Membros> findAllByMembrosId_Idprojeto(BigInteger id);
 }
