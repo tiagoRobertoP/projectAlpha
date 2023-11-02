@@ -85,7 +85,7 @@ public class ProjetoService {
                 .dataInicio(projeto.getDataInicio())
                 .dataPrevisaoFim(projeto.getDataPrevisaoFim())
                 .gerente(Pessoa.builder()
-                        .idPessoa(projeto.getIdgerente())
+                        .idPessoa(projeto.getGerente())
                         .build())
                 .build());
     }
