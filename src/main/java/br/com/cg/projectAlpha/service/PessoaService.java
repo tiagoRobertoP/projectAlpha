@@ -18,8 +18,9 @@ import java.util.stream.Collectors;
 @Service
 public class PessoaService {
 
-    @Autowired
     private PessoaRepository pessoaRepository;
+
+    public PessoaService (PessoaRepository repository){this.pessoaRepository = repository;}
 
     public Page<Pessoa> getPessoas(Pageable pageable){
         List<Pessoa> pessoaList = pessoaRepository.findAllByOrderByNomeAsc();
