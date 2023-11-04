@@ -54,7 +54,7 @@ public class PessoaController {
     @DeleteMapping("/{id}")
     public ResponseEntity<Pessoa> delete(@PathVariable("id") BigInteger id) throws PessoaException {
         Pessoa pessoaDeleted = pessoaService.delete(id);
-        LOG.info("Pessoa created - ID: {}", id);
+        LOG.info("Pessoa deleted - ID: {}", id);
         return new ResponseEntity<Pessoa>(pessoaDeleted, HttpStatus.OK);
     }
 }
